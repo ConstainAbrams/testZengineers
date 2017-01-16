@@ -1,0 +1,230 @@
+$width: 100
+$columns_l: 10
+$columns_m: 8
+$columns_t: 6
+$columns_s: 4
+$columns_exs: 2
+
+
+$large: 1200px
+$medium: 992px
+$table: 768px
+$small: 480px
+$ex_small: 320px
+
+// loop for responsive design
+
+@mixin respond-to($media)
+	@if $media == handhelds
+		@media only screen and(max-width: $ex_small)
+			@content
+	@else if $media == small-screens
+		@media only screen and (min-width: $ex_small + 1) and (max-width: $small - 1)
+			@content
+	@else if $media == table-screens
+		@media only screen and (min-width: $small + 1) and (max-width: $table)
+			@content
+	@else if $media == medium-screens
+		@media only screen and (min-width: $table + 1) and (max-width: $medium - 1)
+			@content
+	@else if $media == large-screens
+		@media only screen and (max-width: $large)
+			@content 
+
+//Large-screen 1200px
+@include respond-to(large-screens)
+	@for $i from 1 through $columns_l
+		.col-large-#{$i}
+			width: (($width/ $columns_l) * $i) * 1%
+
+
+//medium-screen 992px 8column
+@include respond-to(medium-screens)
+	@for $i from 1 through $columns_m
+		.col-medium-#{$i}
+			width: (($width/ $columns_m) * $i) * 1%
+	.text_logo
+		float: left
+	.content
+		overflow: hidden
+		.list_tech, .list_car, .list_cargo, .list_icebox,
+		.list_dishwasher, .list_teapot, .list_android, .list_iphone,
+		.list_computer, .list_laptop, .list_clothes, .list_home
+			margin: 0 10%
+
+	.side_bar
+		width: 100% 
+		left: 20px
+		.car, .tech, .mob_phone, .cmptr, .clothes, .home
+			display: inline
+			border-right: 1px solid
+			padding: 0 1%
+		.home
+			border: none
+			
+	// Prais-photo logo
+	.prais_logo
+		margin: 2% 41%	
+	.slider .btn_slider ul
+		top: 100px	
+		
+
+//table-screen 768px 6column
+@include respond-to(table-screens)
+	@for $i from 1 through $columns_t
+		.col-table-#{$i}
+			width: (($width/ $columns_t) * $i) * 1%
+	.phone
+		float: left
+	.content
+		overflow: hidden
+	.prais_logo
+		margin: 2% 41%	
+	.list_tech, .list_car, .list_cargo, .list_icebox,
+	.list_dishwasher, .list_teapot, .list_android, .list_iphone,
+	.list_computer, .list_laptop, .list_clothes, .list_home
+		margin: 0 10%
+		.photo_1
+			margin: 27px 0px
+			padding: 10px 8px
+			p
+				margin-top: 35px
+
+	.side_bar
+		width: 100% 
+		left: 20px
+		.car, .tech, .mob_phone, .cmptr, .clothes, .home
+			display: inline
+			border-right: 1px solid
+			padding: 0 1%
+		.home
+			border: none
+	.slider .btn_slider ul
+		top: 100px
+	.contact .contact_form
+		width: 373px
+
+	
+
+// small screens 480px 4column
+@include respond-to(small-screens)
+	@for $i from 1 through $columns_s
+		.col-sm-#{$i}
+			width: (($width/ $columns_s) * $i) * 1%
+	.phone
+		float: left
+		padding: 13% 0
+	header
+		padding: 2% 13%
+		box-sizing: border-box
+	.content
+		overflow: hidden
+	.prais_logo
+		margin: 2% 29%	
+	.list_tech, .list_car, .list_cargo, .list_icebox,
+	.list_dishwasher, .list_teapot, .list_android, .list_iphone,
+	.list_computer, .list_laptop, .list_clothes, .list_home
+		margin: 0 0%
+
+
+	.side_bar
+		width: 100% 
+		left: 20px
+		.car, .tech, .mob_phone, .cmptr, .clothes, .home
+			display: inline
+			border-right: 1px solid
+			padding: 0 1%
+		.home
+			border: none
+	.slider .btn_slider ul
+		top: 50px
+		li
+			font-size: 22px
+	// footer
+	footer
+		.container
+			.row
+				.col-sm-4
+					padding-top: 17px
+	.text_bottom_slider
+		margin: 5% 0
+		.container
+			.row
+				.col-sm-4
+					.row
+						.col-sm-4:nth-child(2)
+							border: none
+							.text_left, .text_right
+								margin: 0% 0%
+	// contact_form
+	.contact .contact_form
+		width: 270px
+		height: 443px
+	.contact textarea
+		height: 75px
+	.contact h1
+		font-size: 1.2em
+		padding-bottom: 0px
+	.contact input[type="submit"]
+		margin-top: 3px
+
+// extra-sm screens 320px 2column
+@include respond-to(handhelds)
+	@for $i from 1 through $columns_exs
+		.col-exs-#{$i}
+			width: (($width/ $columns_exs) * $i) * 1%
+
+	.phone
+		padding: 15% 0
+	.content
+		overflow: hidden
+	.prais_logo
+		margin: 2% 15%	
+	.list_tech, .list_car, .list_cargo, .list_icebox,
+	.list_dishwasher, .list_teapot, .list_android, .list_iphone,
+	.list_computer, .list_laptop, .list_clothes, .list_home
+		margin: 0 0%
+
+	.side_bar
+		width: 100% 
+		left: 20px
+		.car, .tech, .mob_phone, .cmptr, .clothes, .home
+			display: inline
+			border-right: 1px solid
+			padding: 0 1%
+		.home
+			border: none
+	.slider .btn_slider ul
+		top: 30px
+		li
+			font-size: 22px
+	
+	// footer
+	footer
+		.container
+			.row
+				.col-exs-2
+					padding-top: 17px
+	.text_bottom_slider
+		margin: 5% 0
+		.container
+			.row
+				.col-exs-2
+					.row
+						.col-exs-2:nth-child(2)
+							border: none
+							.text_left, .text_right
+								margin: 0% 0%
+
+	// contact_form
+	.contact .contact_form
+		width: 270px
+		height: 433px
+	.contact textarea
+		height: 75px
+	.contact h1
+		font-size: 1.2em
+		padding-bottom: 0px
+	.contact input[type="submit"]
+		margin-top: 3px
+

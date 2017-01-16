@@ -1,0 +1,426 @@
+$width: 100
+$gutter: 10
+$columns: 12
+//color
+$tc: #777777
+$fr: #535353
+
+@import "fonts.sass"
+
+// reset option
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	font-family: PS_Sans, Arial, Helvetica, sans-serif
+	color: #000
+
+article, aside, details, figcaption, figure, footer, header, menu,
+nav, section
+	display: block
+
+img
+	max-width: 100%
+	height: auto
+
+
+.container::before, .container::after,
+.row::before, .row::after,
+.clear::before, .clear::after
+	content: " "
+	display: table
+	
+.container::before, .container::after,
+.row::before, .row::after,
+.clear::after
+	clear: both
+		
+
+// loop for responsive design
+
+.container
+	margin-left: auto
+	margin-right: auto
+	padding-left: $gutter + px
+	padding-right: $gutter + px
+	.row
+		margin-left: -$gutter + px
+		margin-right: -$gutter + px
+		&>[class*="col-"]
+			position: relative
+			min-height: 1px
+			float: left
+			padding-left: $gutter + px
+			padding-right: $gutter + px
+
+@for $i from 1 through $columns
+	.col-#{$i}
+		width: (($width/ $columns) * $i) * 1%
+
+
+
+
+//Start....
+
+
+// header
+.no-margin
+	margin: -20px
+header
+	background-color: #dcdcdc
+	padding: 3% 13%
+	color: $tc
+.logo
+	float: left
+	background-color: $tc
+	height: 100px
+	width: 100px
+	margin-right: 15px
+.text_logo
+	h1
+		font-size: 2em
+		line-height: 0.8em
+		font-weight: 300
+		span
+			display: block
+	p
+		font-size: 1em
+		padding-top: 1em
+
+.phone
+	float: right
+	p
+		letter-spacing: 0.1em
+		font-size: 1.5em
+		margin: 1px 1px
+	span
+		font-weight: bold
+		padding-top: 1em
+		float: right
+		cursor: pointer
+		border-bottom: none
+		letter-spacing: 1px
+		&:hover
+			border-bottom: 2px dashed
+
+// call option
+
+.contact
+	position: fixed
+	width: 100%
+	height: 100%
+	background-color: rgba(0, 0, 0, 0.7)
+	z-index: 50
+	right: 0
+	top: 0
+	display: none
+	color: $fr
+	.contact_form
+		text-align: center
+		background-color: white
+		width: 460px
+		height: 560px
+		display: block
+		margin: 10% auto
+		padding-top: 3px
+		button.btn-close
+			position: relative
+			border: none
+			background-color: $tc
+			height: 25px
+			width: 25px
+			z-index: 100
+			color: white
+			left: 53%
+			bottom: 29px
+			cursor: pointer
+			transition: all 1s ease
+			display: inline
+			font-size: 1.3em
+			&:hover
+				color: rgba(0,0,0, 0.5)
+		button.btn-close, x:-moz-any-link
+			position: relative
+			bottom: 5%
+			
+	h1
+		text-transform: uppercase
+		font-size: 1.5em
+		padding-bottom: 20px
+	label
+		display: block
+	input[type="text"]
+		width: 87%
+		height: 40px
+		margin-bottom: 17px
+		font-size: 1.5em
+		text-align: left
+		padding: 0 15px
+	textarea
+		width: 87%
+		height: 140px
+		padding: 15px 15px
+		font-size: 1.5em
+	input[type="submit"]
+		margin-top: 18px
+		width: 130px
+		height: 40px
+		background: transparent
+		border: none
+		background-color: $tc
+		color: white
+		text-transform: uppercase
+		font-weight: bold
+		font-size: 1em
+		transition: all 0.8s ease
+		cursor: pointer
+		&:hover
+			box-shadow: 0px 0px 10px 5px  rgba(0,0,0, 0.5)
+
+
+// navigation sect...
+.menu
+	width: 100%
+	height: 100%
+	padding: 2% 0%
+	background-color: $fr
+	.nav
+		text-align: center
+		font-size: 30px
+		ul
+			li
+				display: inline
+				border-right: 1px solid white
+				padding: 0% 1%
+				&:last-child
+					border-right: none
+				a
+					text-decoration: none 
+					color: white
+					duration: 3s
+					&:hover
+						border-bottom: 1px solid white
+
+
+// slider_photo_header
+					
+.slider
+	overflow: hidden
+	.photo_slider
+		position: relative
+		width: 200%
+		img
+			width: 50%
+			float: left
+	.btn_slider
+		position: absolute
+		width: 100%
+		
+		ul
+			list-style-type: none
+			position: relative
+			top: 200px
+			li
+				background-color: rgba(0, 0, 0, 0.4)
+				display: inline
+				padding: 0px 10px
+				cursor: pointer
+				font-size: 44px
+				margin: 0 40px
+			.prev
+				float: right
+
+
+ // nav menu
+.caption_nav
+	width: 100%
+	padding: 2% 6%
+	ul
+		li
+			list-style-type: none
+			display: inline
+			margin: 0 14px
+			&:not(:last-child)::after
+				content: ""
+				width: 10px
+				height: 17px
+				border-right: 1px solid
+				transform: rotate(26deg)
+				position: absolute
+			a
+				text-decoration: none
+				color: $tc
+				font-size: 1.2em
+				&:hover
+					border-bottom: 1px solid
+
+
+// side bar
+.side_bar
+	color: $tc
+	width: 67%
+	position: relative
+	left: 100px
+	a
+		text-decoration: none
+		color: $tc	
+		font-size: 1.2em	
+		&:hover
+			border-bottom: 1px solid
+	ul
+		display: none
+		margin: 0px 35px
+		li
+			cursor: pointer
+			font-size: 0.9em
+			a
+				&:hover
+					border-bottom: 1px solid
+	.border_not_black
+		border-bottom: 1px solid
+	.border
+		border-bottom: 1px solid
+		color: black
+
+
+
+// product item
+.list_2, .list_3, .list_4, .list_5, .list_6, .list_7
+	display: none
+
+.list_tech, .list_car, .list_cargo, .list_icebox,
+.list_dishwasher, .list_teapot, .list_android, .list_iphone,
+.list_computer, .list_laptop, .list_clothes, .list_home
+	ol
+		margin: 0% 35%
+		li
+			cursor: pointer
+			list-style-type: none	
+			display: inline-block
+			padding: 2% 1%
+			transition: all 0.3s ease-in-out
+			&:hover
+				font-size: 1.4em
+	.photo_1
+		background-color: rgba(0,0,0, 0.2)
+		padding: 12px 14px
+		margin: 23px 0px
+		width: 100%
+		color: $tc
+		h2
+			font-size: 15px	
+		span
+			float: right
+			cursor: pointer
+			img:hover
+				width: 35px
+		p
+			color: black
+			font-weight: bold
+			letter-spacing: 2px
+			font-size: 20px	
+			margin-top: 60px
+
+
+.list_car, .list_cargo, .list_icebox, .list_dishwasher,
+.list_teapot, .list_android, .list_iphone, .list_computer,
+.list_laptop, .list_clothes, .list_home
+	display: none
+
+
+		
+// Prais-photo logo
+.prais_logo
+	float: right
+	margin: 63% 0%
+	img
+		box-shadow: 0px 10px 5px 0px rgba(0,0,0, 0.4)
+	p
+		font-size: 2em
+		font-weight: bold
+		margin: 0 -16%
+
+
+// section text bottom side bar 
+
+.text_bottom_slider
+	margin: 5% 0
+	.container
+		.row
+			.col-9
+				.row
+					.col-4, .col-6
+						border-top: 1px solid
+						.text_left
+							margin: 10% 0%
+						.text_right
+							margin: 10% 0%
+
+	
+	
+
+
+// footer
+footer
+	background-color: $tc
+	padding: 5% 3%
+	color: rgba(255,255,255, 0.7)
+	a
+		text-decoration: none
+		color: rgba(255,255,255, 0.7)
+	ul
+		list-style-type: none
+		a
+			border-bottom: 1px solid
+	img
+		float: left
+		padding: 0 3%
+	span
+		border-bottom: 1px solid
+
+		
+
+
+		
+
+	
+
+
+	
+
+
+
+
+	
+		
+
+	
+	
+
+		
+					
+
+
+	
+		
+						
+
+
+		
+
+	
+	    
+		
+	
+		
+		
+	
+			
+		
+			
+
+
+					
